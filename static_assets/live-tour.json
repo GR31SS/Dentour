@@ -1,0 +1,618 @@
+{
+	"name":"DenTour Virtual Reality Tour",
+	"defaults":{
+		"infos":{
+			"icon":"icons/info.png",
+			"iconWidth": 0.55,
+			"iconHeight": 0.55,
+			"iconTranslateZ": -4,
+			"iconDuration": 300,
+			"width": 2,
+			"backgroundColor": "#ffffffe6",
+			"cardBorderWidth": 0,
+			"borderColor": "#fff"
+		},
+		"navs":{
+			"gazeNav": true,
+			"gazeDelay": 1800,
+			"iconColorStart": "#2BB673",
+			"iconColorEnd": "#808080",
+			"iconColorDisable": true,
+			"backgroundColor": "#44444400",
+			"backgroundGaze": "#44444400",
+			"textColor": "#000",
+			"fontSize": 0.16,
+			"borderRadius": 0.01,
+			"paddingLeft": 0.1,
+			"paddingRight": 0.1,
+			"icon":"icons/up-arrow.png"
+		}
+	},
+
+	"firstSceneId":"StartScreen",
+	"scenes":[
+		{
+			"id":"StartScreen",
+			"photopanos":[
+				{"src":"img/start-screen.png","rotateY":0}
+			],
+			"navs":[
+				{"to":"Entrance","rotateY":0, "rotateX": 18, "icon":"icons/start.png", 
+					"iconTranslateZ": -2, "iconColorDisable": true, "iconWidth":1.25,
+					"iconHeight":0.5, "gazeNav": false
+				}
+			],
+			"infos": [
+				{
+					"card":
+					[
+						{"type": "header", "txt": "WELCOME TO DENTOUR", "textColor": "white", "fontSize": 0.29, "text-align": "center"},
+						{"type": "content", "txt": "Use this tour to navigate around your dentists' office!", "textColor": "white", "fontSize":0.18, "text-align":"center"},  
+						{"type":"content", "txt": "Listen to equipment and experience what it's like to miss school for a trip the dentist",
+							"textColor": "white", "fontSize":0.18, "text-align":"center"},
+						{"type":"content", "txt": "Click the icon in the top right corner for help using the app!",
+							"textColor": "white", "fontSize":0.18, "text-align":"center"}
+					], 
+					"backgroundColor": "hsla(360, 0%, 0%, 0)",
+					"stick":true,
+					"rotateY": 0,
+					"rotateX":-10,
+					"width": 3.4
+				}
+			],
+			"preloads":[
+				{"src":"img/ground_floor/entrance.jpg","rotateY":295}
+			]
+		},
+		{
+			"id":"Entrance",
+			"photopanos":[
+				{"src":"img/ground_floor/entrance.jpg","rotateY":250}
+			],
+			"navs":[
+				{"to":"Pharmacy","txt":"Pharmacy","rotateY":292}
+			],
+			"infos":[
+				{
+					"card":[
+						{"type":"header","txt":"Reception", "fontSize": 0.25},
+						{"type":"content","txt":"Time to sign in for your appointment", "fontSize": 0.2}
+					],
+					"rotateY":275,
+					"iconTranslateZ":-6
+				},
+				{
+					"card":[
+						{"type":"header","txt":"Electronic Appointment Sign in", "fontSize": 0.25},
+						{"type":"content","txt":"Why queue for reception? Sign in online here!", "fontSize": 0.2}
+					],
+					"rotateY":315,
+					"iconTranslateZ": -5,
+					"width": 2.5
+				}
+			],
+			"preloads":[
+				{"src":"img/ground_floor/pharmacy.jpg","rotateY":295}
+			],
+			"environment-sound":[
+				{"src":"sounds/waiting_room.mp3","volume":10,"rotateY":160, "loop":true, "autoplay": true}
+			  ]
+		},
+		{
+			"id":"Pharmacy",
+			"photopanos":[
+				{"src":"img/ground_floor/pharmacy.jpg","rotateY":295}
+			],
+            "navs":[
+				{"to":"Entrance","txt":"Entrance / Exit","rotateY":28},
+				{"to":"GroundFloorLifts","txt":"Lifts","rotateY":209, "icon":"icons/right-arrow.png"}
+            ],
+			"infos":[
+				{
+					"card":[
+						{"type":"header","txt":"Pharmacy", "fontSize": 0.3},
+						{"type": "content", "txt": "Collect your prescriptions here", "fontSize": 0.2} 
+					],
+					"rotateY":295,
+					"width": 3
+				},
+				{
+					"card":[
+						{"type":"header","txt":"You can exit the dentist this way", "textColor":"black", "fontSize":0.5} 
+					],
+					"rotateY":30,
+					"pretransform": [{"translate":[1.5, -2.7, -0.8]}, {"rotateX":-80}],
+					"backgroundColor":"hsla(356, 100%, 100%, 0)",
+					"stick": true,
+					"width":5
+					},
+				{
+					"card":[
+						{"type":"header","txt":"Look out for dentist's top tips for a healthy mouth!", "textColor":"black"}
+						 
+					],
+					"rotateY":250,
+					"backgroundColor":"hsla(356, 100%, 100%, 0.45)",
+					"pretransform": [{"translate": [-0.2, 0.12, 0]}, {"rotateY": 50}],
+					"stick": true
+				}
+			],
+			"quiz": [
+				{
+					"question": "True or False? Energy Drinks Don't Cause Cavities",
+					"true": "True",
+					"false": "False",
+					"correctAnswer": "False",
+					"answerExplanation": "There’s a saying in the dental world that goes like this: 'Snack and sip all day? Risk decay!' Don’t put your smile at risk by drinking too many sugary drinks. If you do drink something sweet, try and rinse your mouth with water afterward.",
+					"correctOutput": "Yes, that's Right",
+					"incorrectOutput": "No, that's Wrong",
+					"rotateY":225,
+					"width": 1.4,
+					"height": 0.78,
+					"borderRadius": 0.02
+				}
+			],
+			"speech-button": [
+				{ "srcSound": "/sounds/speech/exit_dentist.mp3", "translateZ": -2, "rotateY":23, "rotateX":-35,
+					"stick": true},
+				{"srcSound": "/sounds/speech/top_tips.mp3", "rotateY":249, "rotateX":-3.5,
+						"pretransform": [{"translate":[1.5, -2.7, -0.8]}, {"rotateX":-80}],
+						"stick": true, "translateZ": -2}
+			],
+			"preloads":[
+				{"src":"img/ground_floor/lifts.jpg"}
+			]
+		},
+		{
+			"id":"GroundFloorLifts",
+			"photopanos":[
+				{"src":"img/ground_floor/lifts.jpg","rotateY":90}
+			],
+			"navs":[
+				{"to":"Pharmacy","txt":"Pharmacy","rotateY":20, "textColor":"white"},
+				{"to":"FirstFloorLifts","txt":"First floor","rotateY":64, "textColor":"white"},
+				{"to":"XRayReception","txt":"X-Ray \nReception","rotateY":102, "textColor":"white"},
+				{"to":"Stairs","txt":"Stairs", "rotateY":280, "textColor":"white", "iconTranslateZ": -3}
+			],
+			"infos":[
+				{
+				"card":[
+					{"type":"header","txt":"Brush twice daily, with a toothpaste containing fluoride", "textColor":"black", "fontSize":0.5}
+					 
+				],
+				"rotateY":115,
+				"pretransform": [{"translate":[1.3, -1.7, -1.0]}, {"rotateX":-80}],
+				"backgroundColor":"hsla(356, 100%, 100%, 0)",
+				"stick": true,
+				"width":4
+				}
+			],
+			"speech-button": [
+				{"srcSound": "/sounds/speech/brush_twice.mp3", "translateZ": -2, "rotateY":99, "rotateX":-25,
+					"stick": true}
+			],
+			"quiz": [
+				{
+					"question": "True or False? Smokeless tobacco isn’t bad for you.",
+					"true": "True",
+					"false": "False",
+					"correctAnswer": "False",
+					"answerExplanation": "All tobacco products are bad for your health, including smokeless tobacco. The best thing you can do is to never start smoking or using any tobacco products. If you use tobacco products, talk to a health professional to find out how to quit.",
+					"correctOutput": "Yes, that's Right",
+					"incorrectOutput": "No, that's Wrong",
+					"rotateY":200,
+					"rotateX":-6.5,
+					"width": 1.4,
+					"height": 0.78,
+					"borderRadius": 0.02
+				}
+			],
+			"preloads":[
+				{"src":"img/ground_floor/xrayReception.jpg"},
+				{"src":"img/first_floor/orthodonticsReception.jpg"},
+				{"src":"img/stairs.jpg"}
+			]
+		},
+		{
+			"id":"Stairs",
+			"photopanos":[
+				{"src":"img/stairs.jpg","rotateY":-25}
+			],
+			"navs":[
+				{"to":"OrthodonticsReception", "txt":"First floor","rotateY":-4, "rotateX":14, "icon":"icons/right-arrow.png"},
+				{"to":"GroundFloorLifts", "txt":"Ground floor", "rotateY":295, "icon":"icons/left-arrow.png"}
+			]
+
+		},
+		{
+			"id":"FirstFloorLifts",
+			"photopanos":[
+				{"src":"img/first_floor/lifts.jpg","rotateY":260}
+			],
+			"navs":[
+				{"to":"GroundFloorLifts","txt":"Ground floor","rotateY":355, "icon":"icons/down-arrow.png", "textColor":"white"},
+				{"to":"OrthodonticsReception","txt":"Orthodontics\n& Paediatrics","rotateY":285, "textColor":"white", "rotateX": -7}
+			],
+			"infos":[
+				{
+				"card":[
+					{"type":"header","txt":"Make sure to brush last thing at night and at least on one other occasion to maintain clean teeth","textColor":"black", "fontSize":0.3} 
+				],
+				"rotateY":230,
+				"pretransform": [{"translate":[-0.7, -0.9, -1.0]}, {"rotateY":-32}],
+				"backgroundColor":"hsla(356, 100%, 100%, 0.45)",
+				"stick": true,
+				"width": 3
+				}
+			],
+			"environment-sound":[
+				{"src":"sounds/lift.mp3","volume": 0.6, "rotateY":160}
+			],
+			"speech-button": [
+				{ "srcSound": "/sounds/speech/brush_at_night.mp3", "translateZ": -2, "rotateY":222, "rotateX":-21,
+					"stick": true}
+			]
+		},
+		{
+			"id":"XRayReception",
+			"photopanos":[
+				{"src":"img/ground_floor/xrayReception.jpg","rotateY":180}
+			],
+            "navs":[
+				{"to":"GroundFloorLifts","txt":"Lift","rotateY":352.5},
+				{"to":"XRayPhotographyRoom", "txt":"Photography\nroom", "rotateY":172, "icon":"icons/left-arrow.png", "iconTranslateZ": -3}
+			],
+			"infos":[
+				{
+				"card":[
+					{"type":"header", "txt":"X-Ray", "fontSize": 0.3},
+					{"type":"content", "txt":"This is where you will sign in for your X-Ray appointment", "fontSize": 0.2}
+				],
+				"rotateY": 197,
+				"cardTranslateZ": -5,
+				"pretransform":[{"translate": [0,0,0]}, {"rotateY":-25}],
+				"width": 2.5
+				},
+				{
+					"card":[
+						{"type":"header", "txt":"Waiting Area", "fontSize": 0.3},
+						{"type":"content", "txt":"This is where you will wait to have an X-Ray", "fontSize": 0.2}
+					],
+					"rotateY": 260,
+					"rotateX": -6,
+					"cardTranslateZ": -5,
+					"width": 2.5
+				},
+				{
+					"card":[
+						{"type":"header", "txt":"The dentist may need to take an x-ray of your teeth"},
+						{"type":"header", "txt":"This is so that they can decide on the best treatment plan for you"}
+					],
+					"rotateY": 85,
+					"rotateX": 0.2,
+					"stick": true,
+					"cardTranslateZ": -4,
+					"backgroundColor":"hsla(356, 100%, 100%, 0)",
+					"width": 4
+				}	
+			],
+			"speech-button": [
+				{ "srcSound": "/sounds/speech/xray_of_teeth.mp3", "translateZ": -1.5, "rotateY":90, "rotateX":-15,
+					"stick": true}
+			],
+			"preloads":[
+				{"src":"img/ground_floor/lift.jpg"},
+				{"src":"img/ground_floor/xray.jpg"}
+			]
+		},
+		{
+			"id":"XRayPhotographyRoom",
+			"photopanos":[
+				{"src":"img/ground_floor/xray.jpg","rotateY":360}
+			],
+            "navs":[
+				{"to":"XRayReception","txt":"X-Ray\nReception","rotateY":156, "icon":"icons/right-arrow.png", "textColor": "white"},
+				{"to":"XRayPano", "txt":"See what an X-Ray of\nyour mouth looks like", "rotateY": 270, "rotateX": 15, "icon":"icons/inspect.png", "textColor": "white"},
+				{"to":"XRayChair", "txt":"Sit on the chair", "rotateY": 359.5, "textColor":"white", "icon":"icons/down-arrow.png"},
+				{"to":"PanoramicXRay", "txt": "Panoramic X-Ray",  "rotateY": 305, "textColor": "white"}
+			],
+			"infos":[
+				{
+					"card":[
+						{"type":"header", "txt":"Panoramic X-ray", "fontSize": 0.4},
+						{"type":"content", "txt":"This X-ray machine captures an image of the entire mouth.", "fontSize": 0.35}
+					],
+					"rotateY": 325,
+					"cardTranslateZ": -5,
+					"rotateX": 10,
+					"width": 3
+				},
+				{
+					"card":[
+						{"type":"header", "txt":"Intraoral X-ray", "fontSize": 0.25},
+						{"type":"image", "src": "img/tools/intraoral.jpg", "ratio": 1.8},
+						{"type":"content", "txt":"This X-ray machine takes a detailed image of inside the mouth!", "fontSize": 0.2}
+					],
+					"rotateY": 380,
+					"rotateX": 10,
+					"iconTranslateZ": -5					
+				},
+				{
+					"card":[
+						{"type":"content", "txt":"To maintain healthy teeth, try and keep the frequency that you eat sugary food and drinks to a minimum!", "fontSize": 0.25, "textColor": "black"}
+					],
+					"rotateY": 353,
+					"rotateX": 48,
+					"stick": true,
+					"backgroundColor":"hsla(356, 100%, 100%, 0)",
+					"cardTranslateZ": 0.3,
+					"width": 3,
+					"pretransform": [{"translate":[0.2, -2.9, -5.0]}, {"rotateY":-2}, {"rotateX":-40}]
+
+				}	
+			],
+			"speech-button": [
+				{ "srcSound": "/sounds/speech/frequency_sugar.mp3", "translateZ": -2, "rotateY":-7, "rotateX":10,
+					"stick": true}
+			],
+			"preloads":[
+				{"src":"img/ground_floor/xrayReception.jpg"},
+				{"src":"img/ground_floor/xrayChairView.jpg", "rotateY": 160},
+				{"src":"img/tools/panoramic-xray.jpg", "rotateY": 5},
+				{"src":"vids/panoramic.mp4"}
+			]
+		},
+		{
+			"id":"PanoramicXRay",
+			"videopanos":[
+				{"src":"vids/panoramic.mp4","rotateY":200}
+			],
+            "navs":[
+				{"to":"XRayPhotographyRoom", "txt":"Back", "icon":"icons/left-arrow.png", "rotateY":160}
+			],
+			"preloads":[
+				{"src":"img/ground_floor/xray.jpg","rotateY":360}
+			]
+		},
+		{
+			"id":"XRayChair",
+			"photopanos":[
+				{"src":"img/ground_floor/xrayChairView.jpg","rotateY":145}
+			],
+            "navs":[
+				{"to":"XRayPhotographyRoom", "txt":"Stand up", "rotateY": 168, "rotateX": -17, "iconTranslateZ": -3, "textColor": "white"},
+				{"to":"IntraoralXRay", "txt":"See what the\nexperience would\nbe like", "rotateY": -265, "rotateX": 17, "iconTranslateZ": -2, "textColor":"white", "icon":"icons/left-arrow.png"}
+			],
+			"quiz": [
+				{
+					"question": "True or False? You should wear a mouthguard when playing rugby.",
+					"true": "True",
+					"false": "False",
+					"correctAnswer": "True",
+					"answerExplanation": "You should wear a mouthguard during all sports, even the ones not considered “contact” sports. It may feel funny at first, but mouthguards are the best thing you can do to protect your teeth from getting broken or knocked out.",
+					"correctOutput": "Yes, that's Right",
+					"incorrectOutput": "No, that's Wrong",
+					"rotateY":130,
+					"rotateX":-6.5,
+					"width": 1.4,
+					"height": 0.88,
+					"borderRadius": 0.02
+				}
+
+			],
+			"preloads":[
+				{"src":"img/ground_floor/xray.jpg","rotateY":360},
+				{"src":"img/ground_floor/xrayReception.jpg"},
+				{"src":"vids/try_intraoral.mp4"}
+			],
+			"infos":[
+				{
+					"card":[
+						{"type":"header","txt":"Panoramic X-Ray"}
+					],
+					"rotateY":200,
+					"iconTranslateZ": -5
+				}
+			]
+		},
+		{
+			"id":"IntraoralXRay",
+			"videopanos":[
+				{"src":"vids/try_intraoral.mp4", "rotateY": 190}
+			],
+			"navs":[
+				{"to":"XRayChair", "txt":"Back", "icon":"icons/left-arrow.png", "rotateY":150}				
+			],
+			"preloads":[
+				{"src":"img/ground_floor/xrayChairView.jpg","rotateY":295}
+			]	
+		},
+		{
+			"id":"XRayPano",
+			"photopanos":[
+				{"src":"img/tools/panoramic-xray.jpg", "rotateY": 5}
+			],
+			"navs":[
+				{"to":"XRayPhotographyRoom", "txt":"Back", "icon":"icons/left-arrow.png", "textColor":"white"}				
+			],
+			"preloads":[
+				{"src":"img/ground_floor/xray.jpg","rotateY":295}
+			]	
+		},
+		{
+			"id":"OrthodonticsReception",
+			"photopanos":[
+				{"src":"img/first_floor/orthodonticsReception.jpg","rotateY":310}
+			],
+            "navs":[
+				{"to":"FirstFloorLifts","txt":"Lifts","rotateY":115, "iconTranslateZ": -2, "textColor": "white", "rotateX": -10},
+				{"to":"Orthodontics","txt":"Orthodontics","rotateY":206.5, "textColor": "white", "iconTranslateZ": -3.6, "rotateX": -5},
+				{"to": "Paediatrics", "txt": "Paedatrics", "rotateY":29, "textColor": "white", "iconTranslateZ": -3.6},
+				{"to":"Stairs","txt":"Stairs","rotateY":315, "rotateX":22,"textColor":"white", "icon":"icons/down-arrow.png"}
+
+            ],
+			"infos":[
+				{
+					"card":[
+						{"type":"header","txt":"Reception"},
+						{"type":"content","txt":"This is where you will sign in for appointment"}
+					],
+					"rotateY":170
+				},
+				{
+					"card":[
+						{"type":"header", "txt": "Where do you want to go?"},
+						{"type":"content", "txt": "Look right for Orthodontics","fontSize":0.18},
+						{"type":"content", "txt": "Look left for Paediatrcs", "fontSize":0.18}
+					],
+					"rotateY":315,
+					"stick": true,
+					"width":2.3,
+					"pretransform": [{"translate": [0, 0, 0]}, {"rotateY": -9}]
+				}
+			],
+			"speech-button": [
+				{ "srcSound": "/sounds/speech/ortho_paeds.mp3", "translateZ": -2, "rotateY":-55, "rotateX":2,
+					"stick": true}
+			],
+			"preloads":[
+				{"src":"img/first_floor/orthodontics.jpg","rotateY":225},
+				{"src":"img/first_floor/lifts.jpg"},
+				{"src":"img/stairs.jpg", "rotateY":-200}
+			]
+		},
+		{
+			"id":"Orthodontics",
+			"photopanos":[
+				{"src":"img/first_floor/orthodontics.jpg","rotateY":225}
+			],
+            "navs":[
+				{"to":"OrthodonticsReception","txt":"Reception","rotateY":25, "textColor":"white"}
+            ],
+			"infos":[
+				{
+					"card":[
+						{"type":"header","txt":"Chair"},
+						{"type":"content","txt":"This is where you will sit when seeing the dentist","fontSize":0.18}
+
+					],
+					"rotateY":263
+				}
+			],
+			"quiz": [
+				{
+					"question": "True or False? Toothpaste can help clear up pimples.",
+					"true": "True",
+					"false": "False",
+					"correctAnswer": "False",
+					"answerExplanation": "Applying toothpaste to your skin can cause irritation or allergic reactions in people with certain sensitivities. The result? You could develop a rash or even rosacea—a chronic condition of redness and skin sores that closely resemble acne.",
+					"correctOutput": "Yes, that's Right",
+					"incorrectOutput": "No, that's Wrong",
+					"rotateY":170,
+					"rotateX":-6.5,
+					"width": 1.4,
+					"height": 0.78,
+					"borderRadius": 0.02
+				}
+			],
+			"preloads":[
+				{"src":"img/first_floor/orthodonticsReception.jpg"}
+			]
+		},
+		{
+		"id":"Paediatrics",
+			"photopanos":[
+				{"src":"img/first_floor/paeds_dept.JPG","rotateY":90}
+			],
+            "navs":[
+				{"to":"OrthodonticsReception","txt":"Reception","rotateY":240, "textColor": "white"},
+				{"to": "PaediatricsChair", "txt":"Fancy a seat\nin the chair?", "rotateY":145, "iconTranslateZ": -4, "rotateX": 9, "textColor":"white", "fontSize": 0.22, "icon":"icons/down-arrow.png"},
+				{"to": "PaediatricsSide", "txt": "Paedatrics\nSide Clinic", "rotateY": 225,"rotateX":10, "textColor":"white", "icon":"icons/right-arrow.png"}
+            ],
+			"infos":[
+				{
+					"card":[
+						{"type":"image","src":"img/chair.JPG", "ratio": 1.4},
+						{"type":"content","txt":"This is where you will sit when seeing the dentist!","fontSize":0.2}
+
+					],
+					"rotateY":55,
+					"width": 3
+				},
+				{
+					"card":[
+						{"type":"header","txt":"Paediatrics Tour"},
+						{"type":"video","src":"vids/orthodontics.MOV", "ratio": 1.7}
+					],
+					"rotateY":175,
+					"icon":"icons/play-button-alt.png",
+					"width": 3
+				}
+			],
+			"button-sound": [
+				{ "srcSound": "/sounds/handpiece.MP4", "rotateY":20, "rotateX": -10, "translateZ":-1.5, "width":0.2, "height":0.2, "stick": true, "srcIcon": "icons/play-button-alt.png", "label": "Handpiece", "color": "#fff"},
+				{ "srcSound": "/sounds/suction.MP4", "rotateY":340, "rotateX":-10 , "translateZ":-1.5, "width":0.2, "height":0.2, "stick": true, "srcIcon":"icons/play-button-alt.png", "label": "Suction Tool", "color": "#fff"}
+			],
+			"preloads":[
+				{"src":"img/first_floor/orthodonticsReception.jpg"}
+			]
+		},
+		{
+			"id":"PaediatricsChair",
+				"photopanos":[
+					{"src":"img/first_floor/paeds_chair_2.JPG","rotateY":-15}
+				],
+				"navs":[
+					{"to":"Paediatrics","txt":"Stand Up","rotateY":-10, "rotateX":-20, "icontranslateZ":3, "textColor": "white"}
+				],
+				"infos":[
+					{
+						"card":[
+							{"type":"header", "txt": "The DR will be on your right and the nurse on your left"}
+						],
+						"rotateY":300,
+						"rotateX": -25,
+						"pretransform": [{"translate": [0, 0, -0.6]}, {"rotateY": -20}]
+					},
+					{
+						"card":[
+							{"type":"header", "txt": "Spit out the toothpaste after brushing. Do not rinse.","fontSize":0.35, "textColor":"black"}
+						],
+						"rotateY":-15,
+						"pretransform":[{"translate":[-1,-6.5,-2.5]}, {"rotateX":-90}],
+						"stick":true,
+						"width":3.5,
+						"backgroundColor":"hsla(356, 100%, 100%, 0)"
+					}
+				],
+				"speech-button": [
+					{ "srcSound": "/sounds/speech/spit_toothpaste.mp3", "translateZ": -2.5, "rotateY":-15, "rotateX":-43.5, "stick": true}
+				]
+		},
+		{
+			"id":"PaediatricsSide",
+			"photopanos":[
+				{"src":"img/first_floor/paeds_sideroom_2.JPG","rotateY":10}
+			],
+			"navs":[
+				{"to":"Paediatrics","txt":"Go back\nto the clinic","rotateY":63, "rotateX":10, "icontranslateZ":3, "textColor": "white"}
+			],
+			"quiz": [
+				{
+					"question": "True or False? Sugar causes cavities.",
+					"true": "True",
+					"false": "False",
+					"correctAnswer": "False",
+					"answerExplanation": "This one is tricky, but it’s true. Sugar by itself does not cause cavities. It’s the acid produced by the cavity-causing bacteria that cause cavities. You can help prevent cavities by brushing twice a day and flossing daily and limiting between-meal snacks and visiting your dentist regularly.",
+					"correctOutput": "Yes, that's Right",
+					"incorrectOutput": "No, that's Wrong",
+					"rotateY":110,
+					"rotateX": 10,
+					"width": 1.4,
+					"height": 0.78,
+					"borderRadius": 0.02
+				}
+			]
+		}	
+	]
+}
