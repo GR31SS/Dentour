@@ -11,6 +11,7 @@
     "download": "node getimages.js"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "live-tour-lab": "^0.2.2",
     "ovrui": "~2.0.0",
     "react": "16.0.0",

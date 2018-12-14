@@ -1,7 +1,7 @@
 var fs = require('fs');
 let axios = require('axios')
 
-const outPath = "static_assets/videos"
+const outPath = "static_assets/vids"
 
 const files = [
   "orthodontics.MOV",
