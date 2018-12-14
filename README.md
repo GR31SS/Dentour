@@ -31,6 +31,14 @@ Installing node_modules
 ```
 npm install
 ```
+
+Create a file in the static assets
+vids
+
+Download assets
+```
+npm run download
+```
 ### Starting the application
 
 Running localhost
